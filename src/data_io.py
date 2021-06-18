@@ -68,7 +68,6 @@ def _get_image_from_path(img_path, channels=1, dtype='uint8', crop_bd_width=0,
     if crop_bd_width > 0:
         w = crop_bd_width
         img = img[w:-w,w:-w,:]
-        mask = mask[w:-w,w:-w,:]
 
     # Scale the intensity
     img = tf.cast(img, tf.float32) * scale

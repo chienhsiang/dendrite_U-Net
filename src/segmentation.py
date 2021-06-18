@@ -58,15 +58,15 @@ class Task:
         cfg = {**common_cfg, **cfg}
 
         if 'train_data' in cfg:
-            cfg['img_dir'] = os.path.join(cfg['root_folder'], cfg['data_subfoler'],
+            cfg['img_dir'] = os.path.join(cfg['root_folder'], cfg['data_subfolder'],
                                           cfg['train_data'], cfg['img_subfolder'])
-            cfg['mask_dir'] = os.path.join(cfg['root_folder'], cfg['data_subfoler'],
+            cfg['mask_dir'] = os.path.join(cfg['root_folder'], cfg['data_subfolder'],
                                            cfg['train_data'], cfg['mask_subfolder'])
 
         if 'test_data' in cfg:
-            cfg['test_img_dir'] = os.path.join(cfg['root_folder'], cfg['data_subfoler'],
+            cfg['test_img_dir'] = os.path.join(cfg['root_folder'], cfg['data_subfolder'],
                                                cfg['test_data']['name'], cfg['img_subfolder'])
-            cfg['test_mask_dir'] = os.path.join(cfg['root_folder'], cfg['data_subfoler'],
+            cfg['test_mask_dir'] = os.path.join(cfg['root_folder'], cfg['data_subfolder'],
                                                cfg['test_data']['name'], cfg['mask_subfolder'])
         
         # conversion string to number or function handle
@@ -273,7 +273,6 @@ class Task:
         test_cfg = self.get_cfg_from_yaml(test_yaml)
 
         file_dir = test_cfg['test_img_dir']
-        print(file_dir)
         file_type = test_cfg['test_data']['file_type']
         filter_patter = test_cfg['test_data']['filter_patter']
         chunk_size = test_cfg['chunk_size']
@@ -284,7 +283,7 @@ class Task:
 
         # Get img_files and ans_files
         img_files = data_io.get_filenames(file_dir, file_type, filter_patter)
-        print(img_files)
+
         if overlay_ans:
             ans_dir = test_cfg['test_mask_dir']
             ans_files = data_io.get_filenames(ans_dir, file_type, filter_patter)

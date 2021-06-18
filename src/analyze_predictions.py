@@ -249,7 +249,7 @@ def get_model_results(dataset, model_name):
     n_tasks = len(y_pred_paths)
 
     if not PARAMS['PRED_ONLY']: # get true data
-        data_root = os.path.join(root_path, cfg['data_subfoler'])
+        data_root = os.path.join(root_path, cfg['data_subfolder'])
         img_dir = os.path.join(data_root, dataset, cfg['img_subfolder'])
         y_true_dir = os.path.join(data_root, dataset, cfg['mask_subfolder'])
         y_true_paths = get_filenames(y_true_dir, FILE_TYPE, FILTER_PATTERN)
