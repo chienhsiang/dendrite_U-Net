@@ -226,6 +226,8 @@ def get_results(path_pair):
         if not os.path.exists(post_proc_dir):
             os.makedirs(post_proc_dir, exist_ok=False)
         img_path = os.path.join(post_proc_dir, fname)
+        if os.path.exists(img_path):
+            os.remove(img_path)
         skimage.io.imsave(img_path, y_pred.astype(np.uint8) * 255)
  
     return results
@@ -264,15 +266,15 @@ def get_model_results(dataset, model_name):
     path_pairs = zip(y_true_paths, y_pred_paths)
 
     results = []
-    with Pool(mp.cpu_count(), initializer=init_pool, initargs=(PARAMS,)) as p:
-        for i, r in enumerate(p.imap(get_results, path_pairs), 1):
-            results.append(r)
-            print("  Done {}/{}".format(i, n_tasks), end='\r')
+    # with Pool(mp.cpu_count(), initializer=init_pool, initargs=(PARAMS,)) as p:
+    #     for i, r in enumerate(p.imap(get_results, path_pairs), 1):
+    #         results.append(r)
+    #         print("  Done {}/{}".format(i, n_tasks), end='\r')
 
-    ## None parallel        
-    # for i, r in enumerate(map(get_results, path_pairs), 1):
-    #     results.append(r)
-    #     print("  Done {}/{}".format(i, n_tasks), end='\r')
+    # None parallel        
+    for i, r in enumerate(map(get_results, path_pairs), 1):
+        results.append(r)
+        print("  Done {}/{}".format(i, n_tasks), end='\r')
     
     return results
 
