@@ -35,6 +35,7 @@ import pandas as pd
 from functools import reduce
 
 import skimage
+import skimage.io
 from skimage.transform import resize
 from skimage.morphology import skeletonize
 from skimage.morphology import binary_dilation

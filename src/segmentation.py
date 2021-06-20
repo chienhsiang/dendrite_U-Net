@@ -131,7 +131,7 @@ class Task:
         # loss functions
         loss_fn = self.get_loss_fn_from_name(self.cfg['loss_fn_name'])
 
-        model.compile(optimizer=optimizer, loss=loss_fn, metrics=metrics, run_eagerly=True) 
+        model.compile(optimizer=optimizer, loss=loss_fn, metrics=metrics, run_eagerly=True)
 
         return model
 
