@@ -10,3 +10,61 @@ Require [Anaconda](https://www.anaconda.com/products/individual).
 2. Create a conda environment by `conda env create -f environment.yml`.
 3. Activate the environment by `conda activate tf2`.
 
+
+## Usage
+The main function to train and apply a model for segmentation is `src/segmentation.py`.
+
+~~~bash
+python src/segmentation.py -h
+~~~
+
+This will show the usage of this function:
+
+~~~bash
+usage: segmentation.py [-h] [--mode MODE] [--gpu_id GPU]
+                       [--src_model_yaml SRC_MODEL_YAML]
+                       [--test_yaml TEST_YAML]
+                       task_yaml
+
+positional arguments:
+  task_yaml             yaml file of the task
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --mode MODE           TRAIN, TRANSFER, EVAL or TEST
+  --gpu_id GPU          ID of GPU to use
+  --src_model_yaml SRC_MODEL_YAML
+                        Yaml of source model
+  --test_yaml TEST_YAML
+                        Yaml of test data
+~~~
+
+
+### Train a new model
+After creating a model configuration (e.g. model_061921.yaml) in the `configs` folder, execute:
+
+~~~bash
+python src/segmentation.py model_061921.yaml --mode TRAIN
+~~~
+
+The model weights at different epochs will be saved in the `models` folder.
+
+
+### Evalue the trained model
+Provide the model configuration (e.g. model_061921.yaml), and change mode to "EVAL".
+
+~~~bash
+python src/segmentation.py model_061921.yaml --mode EVAL
+~~~
+
+This will create predicted segmentation in the `results` folder.
+
+
+### Apply the trained model to prediction segmentation
+The data being predicted need to be specified in `test_yaml` and stored in the `configs` folder (e.g. fig_s1.yaml).
+
+~~~bash
+python src/segmentation.py model_062519.yaml --mode TEST --test_yaml fig_s1.yaml
+~~~
+
+The predicted segmentation maps will be saved in the `results` folder.
