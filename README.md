@@ -60,7 +60,7 @@ python src/segmentation.py model_061921.yaml --mode EVAL
 This will create predicted segmentation in the `results` folder.
 
 
-### Apply the trained model to prediction segmentation
+### Apply the trained model to predict segmentation
 The data being predicted need to be specified in `test_yaml` and stored in the `configs` folder (e.g. fig_s1.yaml).
 
 ~~~bash
@@ -68,3 +68,7 @@ python src/segmentation.py model_062519.yaml --mode TEST --test_yaml fig_s1.yaml
 ~~~
 
 The predicted segmentation maps will be saved in the `results` folder.
+
+
+### Quantify morphology
+We provide a jupyter notebook (`Quantify_morphology.ipynb`) to post-process segmentation maps and quantify total dendrite length and tip numbers. After creating segmentation maps in the `results` folder, open and execute `Quantify_morphology.ipynb`.
