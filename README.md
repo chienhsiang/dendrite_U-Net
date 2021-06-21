@@ -51,10 +51,10 @@ The model weights at different epochs will be saved in the `models` folder.
 
 
 ### Evalue the trained model
-Provide the model configuration (e.g. model_061921.yaml), and change mode to "EVAL".
+Provide the model configuration (e.g. model_062519.yaml), and change mode to "EVAL".
 
 ~~~bash
-python src/segmentation.py model_061921.yaml --mode EVAL
+python src/segmentation.py model_062519.yaml --mode EVAL
 ~~~
 
 This will create predicted segmentation in the `results` folder.
