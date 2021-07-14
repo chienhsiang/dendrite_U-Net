@@ -367,6 +367,9 @@ class Task:
 
                 # Overlayed image
                 I = data_io.overlay_mask(I, M, M_pred)
+                if overlay_ans:
+                    I[np.where((I==[0,0,0]).all(axis=2))] = [255,255,255]
+                    I[np.where((I==[255,255,0]).all(axis=2))] = [0,0,0]
                 fname = os.path.join(result_folder_overlay, os.path.basename(g[j]))
                 cv2.imwrite(fname, cv2.cvtColor(I, cv2.COLOR_RGB2BGR))
 
