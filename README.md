@@ -40,6 +40,27 @@ optional arguments:
 ~~~
 
 
+### Add the provided pre-trained model
+1. Download and unzip the provided model folder (model_062519).
+2. Move the model folder into the `models` subfolder:
+
+~~~bash
+.
+├── configs
+├── data
+├── models
+│   └── model_062519
+│       ├── checkpoint
+│       ├── weights-0475.ckpt.data-00000-of-00002
+│       ├── weights-0475.ckpt.data-00001-of-00002
+│       └── weights-0475.ckpt.index
+├── src
+├── Quantify_morphology.ipynb
+├── environment.yml
+└── README.md
+~~~
+
+
 ### Train a new model
 After creating a model configuration (e.g. model_061921.yaml) in the `configs` folder, execute:
 
