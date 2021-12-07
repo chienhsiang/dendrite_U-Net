@@ -5,16 +5,16 @@
 # Chien-Hsiang Hsu, 2019.06.18
 
 
-model_name: model_062519
+model_name: adult_062019
 
 
 ####################################################################################################
 # Training data
 ####################################################################################################
-train_data: 'training'
+train_data: 'training_adult'
 img_file_pattern: '*.png'
 mask_file_pattern: '*.png' 
-match_pattern: 'Larvae'
+match_pattern: 'Adults'
 
 # Used in tensorflow to load data
 read_cfg :

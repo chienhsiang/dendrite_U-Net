@@ -10,8 +10,8 @@ COMMON_YAML = 'common.yaml'
 
 # Data frame 
 COL_ORDER = ['file_name', 'mean_intensity', 'area_true', 'n_endpoints_true', 
-             'dice_loss', 'area_pred', 'n_endpoints_pred']
-TO_TAKE = ['file_name', 'dice_loss', 'area_pred', 'n_endpoints_pred']
+             'dice_loss', 'dice_coeff', 'area_pred', 'n_endpoints_pred']
+TO_TAKE = ['file_name', 'dice_loss', 'dice_coeff', 'area_pred', 'n_endpoints_pred']
 
 FILE_TYPE = '*.png'
 FILTER_PATTERN = None
@@ -203,10 +203,12 @@ def get_results(path_pair):
             y_true = resize(y_true, (y_pred.shape[1], y_pred.shape[0]))
 
         DL = dice_loss(y_true, y_pred.astype(np.float64))
+        DC = dice_coeff(y_true, y_pred.astype(np.float64))
 
         y_true_results = {
             'mean_intensity': get_img_mean_intensity(img_file),
-            'dice_loss': DL, 
+            'dice_loss': DL,
+            'dice_coeff': DC, 
             'area_true': y_true.sum(),
             'n_endpoints_true': get_endpoint_numbers(y_true > 0) 
             }
@@ -288,7 +290,8 @@ def results_to_dataframe(results, tag='', **kwargs):
 
     # Add tag to column names
     if tag is not '':
-        df = df.rename(columns={'dice_loss': 'dice_loss' + tag, 
+        df = df.rename(columns={'dice_loss': 'dice_loss' + tag,
+                                'dice_coeff': 'dice_coeff' + tag,
                                 'area_pred': 'area_pred' + tag,
                                 'n_endpoints_pred': 'n_endpoints_pred' + tag})
     

@@ -49,7 +49,7 @@ optional arguments:
 ├── configs
 ├── data
 ├── models
-│   └── model_062519
+│   └── larva_062519
 │       ├── checkpoint
 │       ├── weights-0475.ckpt.data-00000-of-00002
 │       ├── weights-0475.ckpt.data-00001-of-00002
@@ -72,10 +72,10 @@ The model weights at different epochs will be saved in the `models` folder.
 
 
 ### Evalue the trained model
-Provide the model configuration (e.g. model_062519.yaml), and change mode to "EVAL".
+Provide the model configuration (e.g. larva_062519.yaml), and change mode to "EVAL".
 
 ~~~bash
-python src/segmentation.py model_062519.yaml --mode EVAL
+python src/segmentation.py larva_062519.yaml --mode EVAL
 ~~~
 
 This will create predicted segmentation in the `results` folder.
@@ -85,7 +85,7 @@ This will create predicted segmentation in the `results` folder.
 The data being predicted need to be specified in `test_yaml` and stored in the `configs` folder (e.g. fig_s1.yaml).
 
 ~~~bash
-python src/segmentation.py model_062519.yaml --mode TEST --test_yaml fig_s1.yaml
+python src/segmentation.py larva_062519.yaml --mode TEST --test_yaml fig_s1.yaml
 ~~~
 
 The predicted segmentation maps will be saved in the `results` folder.
