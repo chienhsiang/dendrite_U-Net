@@ -1,15 +1,11 @@
-name: tf2
+name: tf2_mac
 channels:
   - defaults
 dependencies:
-  - python=3.7
+  - python=3.8
   - numpy=1.20.2
   - pandas=1.2.4
   - jupyter=1.0.0
   - scikit-image=0.18.1
   - scikit-learn=0.24.2
-  - tensorflow-gpu=2.4.1
-  - tensorflow-estimator=2.4.1
   - pip=21.1.2
-  - pip:
-    - opencv-python==3.4.2.17

@@ -1,3 +1,8 @@
+# !!! Repo moved
+The new repo is moved to [Liu lab](https://nhri-hhliulab.webnode.tw/) at NHRI: https://github.com/LiuLabNHRI/dendrite-u-net
+
+---
+
 This is code to train the U-Net based model for dendrite segmentation used in
 the paper **A photo-switchable assay system for dendrite degeneration and repair
 in Drosophila melanogaster**.
